@@ -4,9 +4,21 @@ A self-hosted GitHub profile card that shows how many tokens (and how much API-e
 
 No external services. No accounts. No API keys. Everything runs on your machine against your own local logs, and the card is just an SVG committed to your profile repo.
 
-**Live example:**
+**Live examples:**
 
-<img width="100%" src="https://raw.githubusercontent.com/DGO0/DGO0/main/cards/claude-usage.svg" alt="live example" />
+<img width="100%" src="https://raw.githubusercontent.com/DGO0/DGO0/main/cards/ai-usage-full.svg" alt="full variant" />
+<img width="100%" src="https://raw.githubusercontent.com/DGO0/DGO0/main/cards/ai-usage-grass.svg" alt="grass variant" />
+
+## Variants
+
+One run generates all four — embed whichever you like:
+
+| File | Size | Content |
+|---|---|---|
+| `ai-usage-full.svg` | 846×280 | Everything: totals, 4-currency cost, token mix, activity, per-tool split, 30-day chart |
+| `ai-usage-half.svg` | 495×195 | ALL-TIME + COST only — pairs nicely with github-readme-stats cards |
+| `ai-usage-half-grass.svg` | 495×335 | Half card + 26-week contribution-style usage grass |
+| `ai-usage-grass.svg` | 846×190 | 52-week usage grass only (GitHub 잔디 for AI usage) |
 
 ## What it shows
 
@@ -16,8 +28,8 @@ No external services. No accounts. No API keys. Everything runs on your machine 
 | COST | API-equivalent cost in USD + 3 currencies of your choice (live FX rates, free API) |
 | TOKEN MIX | Output / input / cache read / cache write |
 | ACTIVITY | Active days, avg per day, peak day, top model |
-| BY TOOL | Per-tool cost split (Claude Code / Codex / Gemini / Copilot / OpenCode) |
-| Chart | Daily cost, last 30 days, peak highlighted |
+| BY TOOL | Per-tool cost split (Claude Code / Codex / Gemini / Copilot) |
+| GRASS | Contribution-graph-style heatmap of daily cost |
 
 > "API-equivalent" because subscription users (Claude Max etc.) don't actually pay per token — the number is what the same usage would cost on the API. That's the fun part.
 
@@ -50,10 +62,11 @@ A scheduler (Task Scheduler / cron / launchd) runs the script once a day. Each r
    # [2026-07-15T...] card updated: 12.6B tokens | $13,190 | Claude Code $13,190 | Codex $0.04
    ```
 
-4. **Embed in your profile README**
+4. **Embed in your profile README** (any of the four variants)
 
    ```html
-   <img width="100%" src="https://raw.githubusercontent.com/YOURNAME/YOURNAME/main/cards/ai-usage.svg" alt="AI coding usage" />
+   <img width="100%" src="https://raw.githubusercontent.com/YOURNAME/YOURNAME/main/cards/ai-usage-full.svg" alt="AI usage" />
+   <img width="100%" src="https://raw.githubusercontent.com/YOURNAME/YOURNAME/main/cards/ai-usage-grass.svg" alt="AI usage grass" />
    ```
 
 5. **Schedule it daily**
