@@ -3,8 +3,8 @@
 // Aggregates every AI coding CLI that ccusage detects (Claude Code, Codex,
 // Gemini CLI, Copilot CLI, ...) + live FX rates, renders SVG cards, and
 // commits them to your profile repo in a single git-tree commit.
-// Variants: full (846x280) / half (495x195, ALL-TIME+COST) /
-//           half-grass (495x335) / grass (846x190).
+// Variants: full (846x280) / half (423x195, ALL-TIME+COST) /
+//           half-grass (423x335) / grass (846x190).
 // Requirements: Node 18+, GitHub CLI (`gh auth login`), npx.
 // https://github.com/DGO0/ai-coding-usage-card
 import { execSync } from 'node:child_process';
@@ -183,22 +183,22 @@ ${dividers.map((x) => `<line x1="${x}" y1="62" x2="${x}" y2="178" stroke="#26262
 <g class="fade" style="animation-delay:900ms">${bars}</g>`);
 };
 
-// ─── variant: HALF (495x195, ALL-TIME + COST) ───
+// ─── variant: HALF (423x195 — two side by side = one full width) ───
 const buildHalf = () => {
-  const W = 495, H = 195;
+  const W = 423, H = 195;
   return frame(W, H, `${header(W, 34)}
-<line x1="240" y1="60" x2="240" y2="175" stroke="#262626" stroke-width="1"/>
+<line x1="200" y1="60" x2="200" y2="175" stroke="#262626" stroke-width="1"/>
 <g class="fade" style="animation-delay:150ms">${allTimeBlock(30, 74, 140)}</g>
-<g class="fade" style="animation-delay:300ms"><text x="268" y="74" class="hdr">COST</text>${costRows(268, 98, 25, 465)}</g>`);
+<g class="fade" style="animation-delay:300ms"><text x="222" y="74" class="hdr">COST</text>${costRows(222, 98, 25, 393)}</g>`);
 };
 
-// ─── variant: HALF + GRASS (495x335) ───
+// ─── variant: HALF + GRASS (423x335) ───
 const buildHalfGrass = () => {
-  const W = 495, H = 335;
+  const W = 423, H = 335;
   return frame(W, H, `${header(W, 34)}
-<line x1="240" y1="60" x2="240" y2="175" stroke="#262626" stroke-width="1"/>
+<line x1="200" y1="60" x2="200" y2="175" stroke="#262626" stroke-width="1"/>
 <g class="fade" style="animation-delay:150ms">${allTimeBlock(30, 74, 140)}</g>
-<g class="fade" style="animation-delay:300ms"><text x="268" y="74" class="hdr">COST</text>${costRows(268, 98, 25, 465)}</g>
+<g class="fade" style="animation-delay:300ms"><text x="222" y="74" class="hdr">COST</text>${costRows(222, 98, 25, 393)}</g>
 <g class="fade" style="animation-delay:500ms"><text x="30" y="200" class="hdr">GRASS &#183; LAST 26 WEEKS</text>${grass(26, 30, 212, true, 316)}</g>`);
 };
 

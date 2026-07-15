@@ -14,7 +14,7 @@ No external services. No accounts. No API keys. Everything runs on your machine 
 
 <img width="100%" src="https://raw.githubusercontent.com/DGO0/DGO0/main/cards/ai-usage-grass.svg" alt="grass variant" />
 
-`ai-usage-half.svg` (495×195) &nbsp;·&nbsp; `ai-usage-half-grass.svg` (495×335)
+`ai-usage-half.svg` (423×195) &nbsp;·&nbsp; `ai-usage-half-grass.svg` (423×335)
 
 <p align="left">
 <img width="49%" align="top" src="https://raw.githubusercontent.com/DGO0/DGO0/main/cards/ai-usage-half.svg" alt="half variant" />
@@ -28,8 +28,8 @@ One run generates all four — embed whichever you like:
 | File | Size | Content |
 |---|---|---|
 | `ai-usage-full.svg` | 846×280 | Everything: totals, 4-currency cost, token mix, activity, per-tool split, 30-day chart |
-| `ai-usage-half.svg` | 495×195 | ALL-TIME + COST only — pairs nicely with github-readme-stats cards |
-| `ai-usage-half-grass.svg` | 495×335 | Half card + 26-week contribution-style usage grass |
+| `ai-usage-half.svg` | 423×195 | ALL-TIME + COST only — pairs nicely with github-readme-stats cards |
+| `ai-usage-half-grass.svg` | 423×335 | Half card + 26-week contribution-style usage grass |
 | `ai-usage-grass.svg` | 846×190 | 52-week usage grass only (GitHub 잔디 for AI usage) |
 
 ## What it shows
