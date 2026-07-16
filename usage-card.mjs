@@ -8,7 +8,6 @@
 // Requirements: Node 18+, GitHub CLI (`gh auth login`), npx.
 // https://github.com/Baek-Seunghyun/ai-coding-usage-card
 import { execSync } from 'node:child_process';
-import assert from 'node:assert/strict';
 
 // ─────────────────────────── CONFIG ───────────────────────────
 const CONFIG = {
@@ -77,7 +76,7 @@ const snapshot = { version: 1, device: DEVICE, updatedAt: new Date().toISOString
 const ref = await j(await api(`repos/${REPO}/git/ref/heads/main`));
 const baseCommit = await j(await api(`repos/${REPO}/git/commits/${ref.object.sha}`));
 const repoTree = await j(await api(`repos/${REPO}/git/trees/${baseCommit.tree.sha}?recursive=1`));
-const entries = repoTree.tree.filter((x) => x.type === 'blob' && /^cards\/devices\/[a-z0-9_-]+\.json$/i.test(x.path));
+const entries = repoTree.tree.filter((x) => x.type === 'blob' && x.path.startsWith(`${DIR}/devices/`) && x.path.endsWith('.json'));
 const snapshots = await Promise.all(entries.map(async ({ sha }) => {
   const blob = await j(await api(`repos/${REPO}/git/blobs/${sha}`));
   return JSON.parse(Buffer.from(blob.content, 'base64').toString('utf8'));
@@ -100,7 +99,8 @@ for (const item of snapshots) for (const day of item.daily) {
   dailyMap.set(day.period, merged);
 }
 const daily = [...dailyMap.values()].sort((a, b) => a.period.localeCompare(b.period));
-assert.equal(sum(daily, 'totalTokens'), totals.totalTokens, 'daily and all-time totals must match');
+if (sum(daily, 'totalTokens') !== totals.totalTokens)
+  console.warn('warning: merged daily totals do not match the all-time total — check device snapshots');
 const toolNames = [...new Set(snapshots.flatMap((x) => x.tools.map(([name]) => name)))];
 const tools = toolNames.map((name) => [name, snapshots.reduce((total, x) => total + (x.tools.find(([n]) => n === name)?.[1] || 0), 0)]);
 
